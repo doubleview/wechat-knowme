@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ahut</groupId>
+    <artifactId>knowme</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>knowme Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <!-- 项目属性 -->
+    <properties>
+        <!-- environment setting -->
+        <jdk.version>1.6</jdk.version>
+        <tomcat.version>2.2</tomcat.version>
+        <jetty.version>7.6.14.v20131031</jetty.version>
+        <webserver.port>8080</webserver.port>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <downloadSources>true</downloadSources>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>me.chanjar</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>knowme</finalName>
+
+        <plugins>
+            <!-- jetty插件 -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
+                <configuration>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>${webserver.port}</port>
+                        </connector>
+                    </connectors>
+                    <webAppConfig>
+                        <contextPath>/${project.artifactId}</contextPath>
+                    </webAppConfig>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>org.mortbay.util.URI.charset</name>
+                            <value>${project.build.sourceEncoding}</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <stopPort/>
+                    <stopKey/>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
