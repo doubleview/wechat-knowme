@@ -48,10 +48,10 @@ public class WxServlet extends HttpServlet {
         super.init();
 
         config = new WxMpInMemoryConfigStorage();
-        config.setAppId("wxad58b4c185c2ad90"); // 设置微信公众号的appid
-        config.setSecret("ab0404797755d4242cc762be9281f995"); // 设置微信公众号的app corpSecret
-        config.setToken("huchengchao"); // 设置微信公众号的token
-        config.setAesKey("qyn43W1ANKVQWnQOqP31v42XbFub0u7HlWRFByDBhKp"); // 设置微信公众号的EncodingAESKey
+        config.setAppId(""); // 设置微信公众号的appid
+        config.setSecret(""); // 设置微信公众号的app corpSecret
+        config.setToken(""); // 设置微信公众号的token
+        config.setAesKey(""); // 设置微信公众号的EncodingAESKey
 
         wxMpService = new WxMpServiceImpl();
         wxMpService.setWxMpConfigStorage(config);
